@@ -1,0 +1,90 @@
+# README
+
+## Software development plan
+
+#### Statement of purpose and scope
+
+##### Background
+
+I considered a few ideas when deciding which type/kind of terminal app I want to create. Some of those ideas included a virtual game - which will be explained later. I also considered a BMI (body mass index) calculator that will take the user's weight and height measurements as input and display the user's BMI as the output. I discarded this idea mostly because it would have been a bit too simplistic. The third idea that I had was to create a type of shopping app. An app that will help the user to shop for the specific type of shoe they're interested in. The user would be able to input whether they are male or female, what their budget is and what type of shoe they're looking to buy. The app will then, based on the input, display to the user the names of  stores and shops where they can buy shoes.
+
+For this terminal app project I have decided to build a game. At first the idea was to make a virtual pet game where the user would have an animal pet like a cat or a dog. Later I thought lets make it more interesting and have pets like dragons or unicorns. That reminded me a lot about the digital game I remember called Tamagotchi. 
+
+I was thinking about all the types of "pets" that I myself would like to parent, that would be different from just a cat or dog - when I came up with my application idea.
+
+The terminal app that I have decided to build is a Virtual Plant simulation game called Plant Pet. The motivation for this idea comes from being a plant lover myself. 
+
+##### Target Audience
+
+Plant Pet will be a fun game to play for children. Therefor, the target audience of Plant Pet would typically be children between the ages of 4 and 10. 
+
+I believe it is very important for children to learn and understand the importance of nature and the big role plants play in life - being the problem that I want to solve. I think it is therefor best to introduce them to these concepts at an early stage in their life.
+
+##### How the target audience will use the app
+
+The main goal of Plant Pet is to have a healthy plant that grows a flower and to NOT let your plant die. To win at this game the user will have to look after their plant, nurture it so that it will grow healthy and make a beautiful flower, when the game will end. The user will lose when the plant dies. This could happen due to various reasons like underwatering, too little sunlight or when bugs and pests get to the plant. 
+
+Plant Pet will be written using Ruby and will require the user to have a functional laptop/computer with ruby installed to launch and play this game.
+
+
+
+#### Features
+
+Plant Pet will include realistic features that the user will use to raise and care for their virtual plant. 
+
+###### Must have features:
+
+1. Water 
+
+The user will be able to water the plant. When watering the plant the water level of the plant will rise and the plant will grow. The plant's water level will begin at 0 and will increase as the user water's the plant. When the water level goes over 10, the plant will die from overwatering. The user will be able to move their plant from being in the sun to being in the shade. When the plant is in the sun evaporation will occur which will lower the water level of the water. The plant being in the shade will not affect the water level of the plant.
+
+2. Sun or shade
+
+The user will be able to move the plant in the sun for sunlight or in the shade. The user will be asked for how long they want to move their plant outside in the sun. Being in the sun will affect the plants water level, lowering it. The sun will also cause the plant to grow faster. Being outdoors in the sun will increase the risk of pests higher; therefore increasing the pests variable. A higher pests variable and the plant will not be able to grow until the user chooses to use pesticides on the plant.
+
+3. Pesticides 
+
+The plant will incur pests, increasing the pest variable, when the plant is placed in the sun (outside) for longer that 2 days. The user will be notified that some pests are inhabiting the plant when the plant has been placed in the sun outside. The user will then be able to treat the plant with pesticides which will decrease the pests variable to 0. Once the user treats the plant with pesticides the plant's growth will increase.
+
+4. Fertilization 
+
+Fertilizing the plant will increase the growth of the plant the most. The user will only be able to fertilize the plant once in the game because of the size of impact it will have on the growth level of the plant.
+
+5. Name
+
+The user will be able to pick a name for their plant at the beginning of a new game.
+
+###### Nice to have features
+
+1. Trimming
+
+The user will be prompted to trim their plant once the plant reaches a certain growth level or percentage. Trimming the plant will affect the plant's growth level slightly but is necessary in the life cycle of the plant to be healthy. 
+
+2. Stats
+
+A separate option on the main menu that, when selected at any given time during the game, will display to the user the current stats of the plant at that specific time. (water level, total growth, if the plant has pests or not)
+
+#### User interaction and User experience
+
+When the game is started/opened, the user will be asked if they want to begin a new game. The user will have the options to choose either yes or no. If 'yes' is selected the game start and call on the New_game class. The New_game class will have required all other classes for the game to be executed. 
+
+The user will be introduced to their new Plant Pet and will be asked to give it a name. From there the game simulation begins. 
+
+The user will be given the main menu which will have the following options: water, feed, move to sun or shade, treat with pesticides and help. The user will then have to choose what they want to do with their plant. This will be done by entering the number that corresponds to the feature that they want to use. 
+
+After the user has picked a feature to use, a message will be displayed to the user accordingly  and the corresponding variable and growth level of the plant will be updated. For example if the user chooses to water the plant, the game will output a message to the user that the plant has been watered. The water_level variable will automatically be updated as well as the growth_level variable.
+
+The user will continuously loop through the main menu until the plant either grows a flower and the user wins (when growth_level is 50) or until the plant dies from poor care.
+
+The user can choose the help option at anytime during the game which will then display a description to the user of how to use the game and how to choose which options. 
+
+**Error handling**
+
+Error handling will take place continuously throughout the game. If the user enters a wrong input from the main menu selection, the game will notify the user that the input was invalid and ask the user to choose and enter a correct option from the main menu.
+
+Error handling will also take place when the user wants to fertilize the plant more than once with an error message saying that they have already fertilized their plant the maximum number of times.
+
+
+
+
+
