@@ -25,20 +25,6 @@ def give_fertilizer(feed)
     end
 end
 
-def give_water(check_water)
-    temp_array = Array.new
-    if check_water < 10
-        puts "You have given your plant some water."
-        water_level += 2
-        growth_level += 1
-            if check_water == 9
-            puts "Slow down, you dont want your plant to drown!"
-            end
-            if check_water > 10
-            puts "Oops! :'( Your baby has died." 
-            end
-    end
-end
         
    
 puts "Welcome to Plant Pet! You have a baby seedling to look after."
@@ -49,7 +35,17 @@ while growth_level <10
     puts "You have the following options to choose from. What would you like to do with your new baby?\n1 Give water\n2 Move inside or outside in the sun\n3 Give fertilizer\n4 Help"
     response = gets.strip.to_i
     if response == 1
-       give_water(water_level)
+        if water_level < 10
+            puts "You have given your plant some water."
+            water_level += 2
+            growth_level += 1
+                if water_level == 9
+                puts "Slow down, you dont want your plant to drown!"
+                end
+                if water_level > 10
+                puts "Oops! :'( Your baby has died." 
+                end
+        end
     elsif response == 2
         @location
     elsif response == 3
