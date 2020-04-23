@@ -1,4 +1,9 @@
 require_relative "simulation_game.rb"
+require 'tty-font'
+require 'colorize'
+
+font = TTY::Font.new(:doom)
+puts font.write("Welcome!").colorize(:red)
 
 puts "Do you want to start a new game? yes or no"
 #gets response from user input
