@@ -10,6 +10,7 @@ class Plant_pet
 end 
 
 
+
 def change_location(in_out)
     if in_out == "inside"
         in_out = "outside"
@@ -103,5 +104,3 @@ while growth_level <10
    
 end
 end
-
-

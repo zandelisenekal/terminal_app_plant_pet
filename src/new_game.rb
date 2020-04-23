@@ -5,7 +5,7 @@ puts "Do you want to start a new game? yes or no"
 response = gets.strip.downcase
 
 if response == "yes"
-    hi
+    new_game
 elsif response == "no"
     system "clear"
     puts "Good bye."
