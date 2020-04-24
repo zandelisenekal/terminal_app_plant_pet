@@ -1,3 +1,5 @@
+require_relative 'flower.rb'
+
 class Plant_pet
     attr_accessor :growth_level, :water_level, :fertilizer, :location
     def initialize(location, water_level, growth_level)
@@ -9,29 +11,35 @@ class Plant_pet
 
 
     def location(num_days)
-        if num_days == 1 || 2
-            @water_level -= (1*num_days)
-            @growth_level += (1*num_days)
+        if num_days == 1..2
+            @water_level -= num_days
+            @growth_level += num_days
             puts "Your plant is spending some time outside!"
             sleep(1*num_days)
             puts "Thanks for remembering to bring your plant in after #{num_days} day(s)."
-        else num_days == 3 || 4
-            @water_level -= (1*num_days) 
+        else num_days == 3..4
+            @water_level -= num_days 
             @growth_level += 2
             sleep(2)
             puts "Oops, your plant picked up a pest while being outside for too long.\nBest to treat it with some pesticide to ensure your plant will continue growing nice and strong.\nUse pesticide?\nOptions:\nYes or no"
+            loops = true
+            while loops
             use_pesticide = gets.strip.downcase
             if use_pesticide == "no"
-                Puts "Not recommended, but okay!"
-                @growth_level -= (1*num_days)
+                puts "Not recommended, but okay!"
+                @growth_level -= num_days
+                loops = false
             elsif use_pesticide == "yes"
                 puts "Thanks for getting rid of those bugs!"
+                loops = false
             else
                 puts "Invalid selection. Please select either 'yes' or 'no' to treat your plant with pesticide."
             end
+        end
     end
-
-
+end
+            
+        
 def give_fertilizer(feed)
     if feed == false
         puts "You have given your plant some fertilizer."
@@ -90,6 +98,9 @@ while @growth_level <10
     end
    
 end
+end_game = Game_over.new()
+end_game.win()
+
 end
 end
 
