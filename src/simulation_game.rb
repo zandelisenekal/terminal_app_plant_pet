@@ -1,25 +1,36 @@
 class Plant_pet
     attr_accessor :growth_level, :water_level, :fertilizer, :location
-    def initialize
-        @water = water
+    def initialize(location, water_level, growth_level)
         @water_level = water_level
         @location = location
-        @fertilizer = fertilizer
+        @fertilizer = false
         @growth_level = growth_level
     end
-end 
 
 
-def change_location(in_out)
-    if in_out == "inside"
-        in_out = "outside"
-        puts "You have moved your plant outside in the sun."
-    elsif in_out == "outside"
-        in_out = "inside"
-        puts "You have now moved your plant back inside, next to your other indoor plants."
+    def location(num_days)
+        if num_days == 1 || 2
+            @water_level -= (1*num_days)
+            @growth_level += (1*num_days)
+            puts "Your plant is spending some time outside!"
+            sleep(1*num_days)
+            puts "Thanks for remembering to bring your plant in after #{num_days} day(s)."
+        else num_days == 3 || 4
+            @water_level -= (1*num_days) 
+            @growth_level += 2
+            sleep(2)
+            puts "Oops, your plant picked up a pest while being outside for too long.\nBest to treat it with some pesticide to ensure your plant will continue growing nice and strong.\nUse pesticide?\nOptions:\nYes or no"
+            use_pesticide = gets.strip.downcase
+            if use_pesticide == "no"
+                Puts "Not recommended, but okay!"
+                @growth_level -= (1*num_days)
+            elsif use_pesticide == "yes"
+                puts "Thanks for getting rid of those bugs!"
+            else
+                puts "Invalid selection. Please select either 'yes' or 'no' to treat your plant with pesticide."
+            end
     end
-    return in_out
-end
+
 
 def give_fertilizer(feed)
     if feed == false
@@ -31,70 +42,47 @@ def give_fertilizer(feed)
     end
 end
 
-def new_game
-    water_level = 1
-    growth_level = 1
-    fertilizer = false
-    location = "inside"       
-   
-puts "Welcome to Plant Pet! You have a baby seedling to look after."
+def new_game()
+   puts "Welcome to Plant Pet! You have a baby seedling to look after."
 
-while growth_level <10
-    puts "Your growth level is #{growth_level}"
-    puts "Your water level is #{water_level}"
-    puts "Your plant is currently #{location}"
+while @growth_level <10
+    puts "Your growth level is #{@growth_level}"
+    puts "Your water level is #{@water_level}"
+    puts "Your plant is currently #{@location}"
     puts "You have the following options to choose from. What would you like to do with your new baby?\n1 Give water\n2 Move inside or outside in the sun\n3 Give fertilizer\n4 Help"
     response = gets.strip.to_i
     if response == 1
-        if water_level < 10
+        if @water_level < 10
             puts "You have given your plant some water."
-            water_level += 2
-            growth_level += 1
-                if water_level == 9
+            @water_level += 2
+            @growth_level += 1
+                if @water_level == 9
                 puts "Slow down, you dont want your plant to drown!"
                 end
-                if water_level > 10
+                if @water_level > 10
                 puts "Oops! :'( Your baby has died." 
                 end
         end
     elsif response == 2
-        puts "Do you want to move your plant inside or outside? Options: inside, outside"
-        in_out = gets.strip.downcase
-        if in_out == "inside"
-            if location == "inside"
-                puts "Your plant is already chilling inside. Do you want to move it outside? Options: yes or no"
-                reply = gets.strip.downcase
-                if reply == "yes"
-                    location = change_location(location)
-                elsif reply == "no"
-                    puts "Okay. Lets keep the plants chilling inside then."
-                else
-                    puts "Invalid selection. Please try again."
-                end
-            else 
-                location = change_location(location)
-            end
-        elsif in_out == "outside"
-            if location == "outside"
-                puts "Your plant is already outside. Shame, do you want to bring it inside? Options: yes or no"
-                reply = gets.strip.downcase
-                if reply == "yes"
-                    location = change_location(location)
-                elsif reply == "no"
-                    puts "Okay. Just dont forget about your plant chilling in the sun outside."
-                else
-                    puts "Invalid selection. Please try again."
-                end
+        puts "Your plant is already inside. Would you like to move it outside? yes or no?"
+        answer = gets.strip.downcase
+        if answer == "no"
+            puts "Cool, keep your plant chilling inside"
+        elsif answer == "yes"
+            puts "For how long do you want to move your plant outside in the sun?\nPick a number:\n1: 1 day\n2: 2 days\n3: 3 days\n4: 4 days"
+            days = gets.strip.to_i
+            case days
+            when 1..4
+                location(days)
             else
-                location = change_location(location)
+                puts "Invalid selection, please try again"
             end
-        else 
-            puts "Invalid selection. Please try again."
         end
+               
 
     elsif response == 3
-        growth_level += give_fertilizer(fertilizer)
-        fertilizer = true
+        @growth_level += give_fertilizer(@fertilizer)
+        @fertilizer = true
     elsif response == 4
         puts "you want help"
     else
@@ -103,5 +91,5 @@ while growth_level <10
    
 end
 end
-
+end
 

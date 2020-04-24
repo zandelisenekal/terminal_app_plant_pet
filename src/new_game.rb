@@ -10,7 +10,8 @@ puts "Do you want to start a new game? yes or no"
 response = gets.strip.downcase
 
 if response == "yes"
-    new_game
+    daisie = Plant_pet.new("inside", 1,1)
+    daisie.new_game()
 elsif response == "no"
     system "clear"
     puts "Good bye."
