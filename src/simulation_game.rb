@@ -2,12 +2,23 @@ require_relative 'flower.rb'
 require 'colorize'
 require 'tty-box'
 
+class InvalidWaterLevelError < StandardError
+end
+
+def validate_water_level (water_level)
+	raise InvalidWaterLevelError, "Water level must not be #{water_level}" if !water_level.is_a?(Integer) || water_level <= 0
+end
+
+
 class Plant_pet
     attr_accessor :growth_level, :water_level, :fertilizer
     def initialize(water_level, growth_level)
-        @water_level = water_level
         @fertilizer = false
         @growth_level = growth_level
+        @water_level = validate_water_level(water_level)
+        rescue InvalidWaterLevelError => e
+            puts "Error: #{e.message}"
+            exit
     end
 
     def types(word)
@@ -58,12 +69,12 @@ class Plant_pet
     def give_fertilizer(feed)
         if feed == false
             system("clear")
-            puts "You have given your plant some fertilizer."
+            types("You have given your plant some fertilizer.")
             sleep(2)
             return 3
         elsif feed == true
             system("clear")
-            puts "You have already given your plant fertilizer."
+            types("You have already given your plant fertilizer.")
             sleep(2)
             return 0
         end
@@ -83,30 +94,30 @@ class Plant_pet
                 if response == 1
                     if @water_level < 10
                         system("clear")
-                        puts "You have given your plant some water."
+                        types("You have given your plant some water.")
                         sleep(2)
                         @water_level += 2
                         @growth_level += 1
                         if @water_level == 9
-                            puts "Slow down, you dont want your plant to drown!"
+                            types("Slow down, you dont want your plant to drown!")
                             sleep(3)
                         end
                         if @water_level > 10
                             end_game_lose = Game_over.new()
-                            end_game_lose.lose()
+                            end_game_lose.lose("over watering.")
                             @growth_level = -1
                         end
                     end
                 elsif response == 2
                     system("clear")
-                    puts "Your plant is already inside. Would you like to move it outside? (y)es or (n)o?"
+                    types("Your plant is already inside. Would you like to move it outside? (y)es or (n)o?\n")
                     answer = gets.strip.downcase
                     if answer == "n"
                         system("clear")
-                        puts "Cool, keep your plant chilling inside"
+                        types("Cool, keep your plant chilling inside")
                     elsif answer == "y"
                         system("clear")
-                        puts "For how long do you want to move your plant outside in the sun?\nPick a number:\n1: 1 day\n2: 2 days\n3: 3 days\n4: 4 days"
+                        types("For how long do you want to move your plant outside in the sun?\nPick a number:\n1: 1 day\n2: 2 days\n3: 3 days\n4: 4 days\n")
                         days = gets.strip.to_i
                         system("clear")
                         case days
@@ -126,7 +137,7 @@ class Plant_pet
                 end
             if @water_level <= 0
                 end_game_lose = Game_over.new()
-                end_game_lose.lose()
+                end_game_lose.lose("not having enough water.")
                 @growth_level = -1
                 break
             end

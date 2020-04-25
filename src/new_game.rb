@@ -11,8 +11,12 @@ response = gets.strip.downcase
 
 if response == "y"
     system("clear")
+    begin
     daisie = Plant_pet.new(1,1)
     daisie.new_game()
+    rescue ArgumentError
+        puts "Wrong number of arguments given."
+    end
 elsif response == "n"
     system "clear"
     puts "Good bye."

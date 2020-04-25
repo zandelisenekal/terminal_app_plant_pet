@@ -30,9 +30,13 @@ class Game_over
    "
     end
 
-    def lose()
+    def lose(reason)
         system("clear")
-        types("Oh no! Your plant has died!".colorize(:red))
+        begin
+        types("Oh no! Your plant has died due to ".colorize(:red) + reason.colorize(:red))
+        rescue NameError
+            puts "Check your method variable name."
+        end
         sleep(2)
         system("clear")
         font = TTY::Font.new(:starwars)
