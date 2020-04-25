@@ -10,6 +10,12 @@ class Plant_pet
         @growth_level = growth_level
     end
 
+    def types(word)
+        word.each_char do |char|
+            print char
+            sleep(0.05)
+        end
+    end 
 
     def location(num_days)
         if num_days == 1 || num_days == 2
@@ -21,20 +27,23 @@ class Plant_pet
         else num_days == 3 || num_days == 4
             @water_level -= num_days 
             @growth_level += 2
-            sleep(2)
-            puts "Oops, your plant picked up a pest outside!.\nBest to treat it with some pesticide to ensure your plant will continue growing nice and strong.\nUse pesticide?\nOptions:\nYes or no"
+            sleep(1)
+            puts "Oops, your plant picked up a pest outside!".colorize(:color => :light_blue, :background => :red)
+            puts "Best to treat it with some pesticide to ensure your plant will continue growing nice and strong.\nUse pesticide?\nOptions:\n(y)es or (n)o"
             loops = true
             while loops
             use_pesticide = gets.strip.downcase
-                if use_pesticide == "no"
-                    puts "Not recommended, but okay!"
+                if use_pesticide == "n"
+                    puts "Not recommended, but okay!".colorize(:red)
+                    sleep(3)
                     @growth_level -= num_days
                     loops = false
-                elsif use_pesticide == "yes"
-                    puts "Yay, you got rid of those bugs!"
+                elsif use_pesticide == "y"
+                    puts "Yay, you got rid of those bugs!".colorize(:green)
+                    sleep(3)
                     loops = false
                 else
-                    puts "Invalid selection. Please select either 'yes' or 'no' to treat your plant with pesticide."
+                    puts "Invalid selection. Please select either 'y' or 'n' to treat your plant with pesticide."
                 end
             end
         end
@@ -52,12 +61,12 @@ class Plant_pet
     end
 
     def new_game()
-        puts "Welcome to Plant Pet! You have a baby seedling to look after."
+        types("Welcome to Plant Pet! You have a baby seedling to look after.")
         sleep(1)
         system("clear")
 
         while @growth_level <10
-            sleep(1)
+            sleep(0.2)
             print TTY::Box.frame "Growth level: #{@growth_level}\nWater level: #{@water_level}".colorize(:light_blue)
             puts "You have the following options to choose from. What would you like to do with your new baby?\n1 Give water\n2 Move inside or outside in the sun\n3 Give fertilizer\n4 Help"
             response = gets.strip.to_i
@@ -76,12 +85,12 @@ class Plant_pet
                     end
                 elsif response == 2
                     system("clear")
-                    puts "Your plant is already inside. Would you like to move it outside? yes or no?"
+                    puts "Your plant is already inside. Would you like to move it outside? (y)es or (n)o?"
                     answer = gets.strip.downcase
-                    if answer == "no"
+                    if answer == "n"
                         system("clear")
                         puts "Cool, keep your plant chilling inside"
-                    elsif answer == "yes"
+                    elsif answer == "y"
                         system("clear")
                         puts "For how long do you want to move your plant outside in the sun?\nPick a number:\n1: 1 day\n2: 2 days\n3: 3 days\n4: 4 days"
                         days = gets.strip.to_i

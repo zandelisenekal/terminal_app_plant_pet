@@ -5,17 +5,17 @@ require 'colorize'
 font = TTY::Font.new(:doom)
 puts font.write("Welcome!").colorize(:green)
 
-puts "Do you want to start a new game? yes or no"
+puts "Do you want to start a new game? (y)es or (n)o"
 #gets response from user input
 response = gets.strip.downcase
 
-if response == "yes"
+if response == "y"
     system("clear")
     daisie = Plant_pet.new(1,1)
     daisie.new_game()
-elsif response == "no"
+elsif response == "n"
     system "clear"
     puts "Good bye."
 else
-    puts "Invalid selection. Please try again. (yes) to start a new game or (no) to exit."
+    puts "Invalid selection. Please try again. Type (y) to start a new game or (n) to exit."
 end
