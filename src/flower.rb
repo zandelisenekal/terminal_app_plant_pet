@@ -7,9 +7,15 @@ class Game_over
     def initialize()
     end
 
+    def types(word)
+        word.each_char do |char|
+            print char
+            sleep(0.05)
+        end
+    end 
 
     def win()
-    puts "Well done! Your plant has a surprise for you!"
+    types("Well done! Look at the surprise from your baby plant!".colorize(:green))
     sleep(1)
     system("clear")
     puts "
@@ -25,11 +31,12 @@ class Game_over
     end
 
     def lose()
-    puts "Oh no! Your plant has died!"
-    sleep(2)
-    system("clear")
-    font = TTY::Font.new(:starwars)
-    puts font.write("GameOver!").colorize(:red)
+        system("clear")
+        types("Oh no! Your plant has died!".colorize(:red))
+        sleep(2)
+        system("clear")
+        font = TTY::Font.new(:starwars)
+        puts font.write("GameOver!").colorize(:red)
     end
 end
 
