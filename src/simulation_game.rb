@@ -1,4 +1,6 @@
 require_relative 'flower.rb'
+require 'colorize'
+require 'tty-box'
 
 class Plant_pet
     attr_accessor :growth_level, :water_level, :fertilizer
@@ -55,9 +57,8 @@ class Plant_pet
         system("clear")
 
         while @growth_level <10
-            sleep(1.5)
-            puts "Your growth level is #{@growth_level}"
-            puts "Your water level is #{@water_level}"
+            sleep(1)
+            print TTY::Box.frame "Growth level: #{@growth_level}\nWater level: #{@water_level}".colorize(:light_blue)
             puts "You have the following options to choose from. What would you like to do with your new baby?\n1 Give water\n2 Move inside or outside in the sun\n3 Give fertilizer\n4 Help"
             response = gets.strip.to_i
                 if response == 1
@@ -74,13 +75,17 @@ class Plant_pet
                         end
                     end
                 elsif response == 2
+                    system("clear")
                     puts "Your plant is already inside. Would you like to move it outside? yes or no?"
                     answer = gets.strip.downcase
                     if answer == "no"
+                        system("clear")
                         puts "Cool, keep your plant chilling inside"
                     elsif answer == "yes"
+                        system("clear")
                         puts "For how long do you want to move your plant outside in the sun?\nPick a number:\n1: 1 day\n2: 2 days\n3: 3 days\n4: 4 days"
                         days = gets.strip.to_i
+                        system("clear")
                         case days
                         when 1..4
                             location(days)
@@ -102,7 +107,7 @@ class Plant_pet
                 end_game_lose.lose()
                 break
             end
-   
+            system("clear")
         end
         if growth_level >= 10
             end_game_win = Game_over.new()
