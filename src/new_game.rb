@@ -4,9 +4,10 @@ require 'colorize'
 
 font = TTY::Font.new(:doom)
 puts font.write("Welcome!").colorize(:green)
+# prints Welcome message to screen using gem when game starts
 
-# 'p' for preview
 if ARGV[0] == "p" 
+    # 'p' for a preview of your plant 
     puts "
     
     {o}{o}{o}
@@ -20,23 +21,20 @@ if ARGV[0] == "p"
 elsif ARGV.length == 2
     daisie = Plant_pet.new(ARGV[0].to_i, ARGV[1].to_i)
     daisie.new_game()
+    # will create the plant with the input given in the command line as water and growth levels
 else
 
 puts "Do you want to start a new game? (y)es or (n)o"
-#gets response from user input
 reply = gets.strip.downcase
 
 if reply == "y"
     system("clear")
-    begin
     daisie = Plant_pet.new(1,1)
     daisie.new_game()
-    rescue ArgumentError
-        puts "Wrong number of arguments given."
-    end
+    # creates a Plant pet called daisie and calls new_game method which starts new game
 elsif reply == "n"
     system "clear"
-    puts "Good bye."
+    puts "Sorry to see you go, good bye."
 else
     puts "Invalid selection. Please try again. Type (y) to start a new game or (n) to exit."
 end
