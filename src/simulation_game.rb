@@ -2,23 +2,12 @@ require_relative 'flower.rb'
 require 'colorize'
 require 'tty-box'
 
-class InvalidWaterLevelError < StandardError
-end
-
-def validate_water_level (water_level)
-	raise InvalidWaterLevelError, "Water level must not be #{water_level}" if !water_level.is_a?(Integer) || water_level <= 0
-end
-
-
 class Plant_pet
     attr_accessor :growth_level, :water_level, :fertilizer
     def initialize(water_level, growth_level)
         @fertilizer = false
         @growth_level = growth_level
-        @water_level = validate_water_level(water_level)
-        rescue InvalidWaterLevelError => e
-            puts "Error: #{e.message}"
-            exit
+        @water_level = water_level
     end
 
     def types(word)
@@ -120,6 +109,7 @@ class Plant_pet
                         types("For how long do you want to move your plant outside in the sun?\nPick a number:\n1: 1 day\n2: 2 days\n3: 3 days\n4: 4 days\n")
                         days = gets.strip.to_i
                         system("clear")
+                        
                         case days
                         when 1..4
                             location(days)
@@ -131,7 +121,9 @@ class Plant_pet
                     @growth_level += give_fertilizer(@fertilizer)
                     @fertilizer = true
                 elsif response == 4
+                    system("clear")
                     puts "Type 1 to water your plant.\nType 2 to move your plant outside.\nType 3 to give your plant fertilizer."
+                    sleep(4)
                 else
                     break
                 end
@@ -148,6 +140,8 @@ class Plant_pet
         end
     end
 end
+
+
 
 
 

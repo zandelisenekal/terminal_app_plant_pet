@@ -15,10 +15,10 @@ class Game_over
     end 
 
     def win()
-    types("Well done! Look at the surprise from your baby plant!".colorize(:green))
-    sleep(1)
-    system("clear")
-    puts "
+        types("Well done! Look at the surprise from your baby plant!".colorize(:green))
+        sleep(1)
+        system("clear")
+        puts "
     
     {o}{o}{o}
      |  |  |
