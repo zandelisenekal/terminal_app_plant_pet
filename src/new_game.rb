@@ -7,7 +7,7 @@ puts font.write("Welcome!").colorize(:green)
 # prints Welcome message to screen using gem when game starts
 
 if ARGV[0] == "p" 
-    # 'p' for a preview of your plant 
+    # type 'p' in command line for a preview of your plant 
     puts "
     
     {o}{o}{o}
@@ -26,12 +26,14 @@ else
 
 puts "Do you want to start a new game? (y)es or (n)o"
 reply = gets.strip.downcase
+# if no input was given in command line this runs
 
 if reply == "y"
     system("clear")
     daisie = Plant_pet.new(1,1)
     daisie.new_game()
     # creates a Plant pet called daisie and calls new_game method which starts new game
+    # sets water_level and growth_level to 1 each
 elsif reply == "n"
     system "clear"
     puts "Sorry to see you go, good bye."

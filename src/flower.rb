@@ -9,7 +9,7 @@ class Game_over
     end
 
     def types(word)  
-        # method that types out characters of each word in string
+        # method that types out characters of each word in string like typewriter
         word.each_char do |char|
             print char
             sleep(0.05)
@@ -17,7 +17,7 @@ class Game_over
     end 
 
     def win()
-        # method defining win with message and image of a plant
+        # method defining win with message and ascii image of a plant
         types("Well done, player! A surprise awaits from your not-so-baby Plant!".colorize(:green))
         sleep(1)
         system("clear")
