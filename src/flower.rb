@@ -17,7 +17,6 @@ class Game_over
     end 
 
     def win()
-        # method defining win with message and ascii image of a plant
         types("Well done, player! A surprise awaits from your not-so-baby Plant!".colorize(:green))
         sleep(1)
         system("clear")

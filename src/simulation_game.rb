@@ -130,7 +130,7 @@ class Plant_pet
                     end
                 elsif response == 2
                     system("clear")
-                    types("How long do you want to move your plant outside in the sun?\nPick a number:\n1: 1 day\n2: 2 days\n3: 3 days\n4: 4 days\n")
+                    types("For how long do you want to move your plant outside in the sun?\nPick a number:\n1: 1 day\n2: 2 days\n3: 3 days\n4: 4 days\n")
                     days = gets.strip.to_i
                         system("clear")
                         case days
@@ -138,6 +138,7 @@ class Plant_pet
                             location(days)
                         else
                             puts "Invalid selection, please try again"
+                            sleep(1)
                         end
                 elsif response == 3
                     @growth_level += give_fertilizer(@fertilizer)

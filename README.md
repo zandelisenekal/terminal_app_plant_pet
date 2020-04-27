@@ -94,6 +94,14 @@ Error handling will also take place when the user wants to fertilize the plant m
 
 #### Control flow
 
+See link to Trello board with full project development plan: https://trello.com/b/xkL51Rl5/terminalapp
+
+![](C:\Users\zandelisenekal\projects\terminal_app\docs\control_flow_terminal_app.png)
+
+
+
+
+
 #### Implementation plan
 
 Full implementation plan of features with checklists, deadlines and labels grouping together features by importance and size on Trello board:  https://trello.com/b/xkL51Rl5/terminalapp
