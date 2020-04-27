@@ -96,6 +96,10 @@ Error handling will also take place when the user wants to fertilize the plant m
 
 See link to Trello board with full project development plan: https://trello.com/b/xkL51Rl5/terminalapp
 
+Link to control flow diagram on GitHub: https://github.com/zandelisenekal/terminal_app_plant_pet/blob/master/docs/control_flow_terminal_app.png
+
+
+
 ![](C:\Users\zandelisenekal\projects\terminal_app\docs\control_flow_terminal_app.png)
 
 
