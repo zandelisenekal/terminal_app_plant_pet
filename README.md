@@ -135,3 +135,51 @@ Full implementation plan of features with checklists, deadlines and labels group
 
 
 
+#### Test cases
+
+Test cases performed using test-unit gem
+
+Link to GitHub: https://github.com/zandelisenekal/terminal_app_plant_pet/blob/master/src/test_cases.rb
+
+```
+
+class LevelTest < Test::Unit::TestCase
+    # test that the water and growth level of the plant is not nil when new plant is created
+    def test_water_level
+        new_plant = Plant_pet.new(1,1)
+        assert_not_nil(new_plant.water_level,"Plant water level cannot be nil")
+    end
+
+    def test_growth_level
+        new_plant = Plant_pet.new(1,1)
+        assert_not_nil(new_plant.growth_level,"Plant growth level cannot be nil")
+    end
+end
+    
+
+class Assert_compare_test < Test::Unit::TestCase
+    # test that the water and growth level of the plant is more than 0 when new plant is created
+    def test_growth_level
+        new_plant = Plant_pet.new(1,1)
+        # test will pass
+        # test will fail when (1,0)
+        assert_compare(0, "<", new_plant.growth_level)
+    end
+
+    def test_water_level
+        new_plant = Plant_pet.new(1,1)
+        # test will pass
+        # test will fail when (0,1)
+        assert_compare(0, "<", new_plant.water_level)
+    end
+end
+```
+
+The two test cases that I chose to perform using the test unit gem was the assert_not_nil test and the assert_compare test.
+
+When a new Plant_pet is created, you have to give it 2 integers as arguments. The first is for the water level that the plant will start on and the second for the growth level that the plant will start the game on.
+
+The assert_not_nil test, tests that when a new Plant pet is created, the values given as arguments are not nil. The test will fail when the values are nil. This test is to ensure that the newly created plant has a water level and growth level assigned to it when the game begin, because those levels cannot be nil.
+
+The assert_compare test, tests that when a new Plant pet is created, the water level and growth level given to the plant is more than 0. This is useful because the plant cannot start with a growth level of -1 or even 0. The test will fail when the water or growth level is 0.
+
