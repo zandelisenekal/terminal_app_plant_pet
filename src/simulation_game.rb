@@ -76,6 +76,7 @@ class Plant_pet
             types("Good job! You have given your plant some fertilizer which will increase the growth speed of your plant.")
             sleep(2)
             return 3
+            # fertilizer will increase growth_level with 3
         elsif feed == true
             system("clear")
             types("Unfortunately you cannot give your plant fertilizer more than once.")
@@ -85,7 +86,7 @@ class Plant_pet
     end
 
     def new_game()
-        types("Welcome to Plant Pet! You have a baby seedling to look after. Your task is to take special care of your plant untill it grows a beautiful flower.\nGood luck!")
+        types("Welcome to Plant Pet! You have a baby seedling to look after. Your task is to take special care of your plant until it grows a beautiful flower.\nGood luck!")
         sleep(1)
         system("clear")
         # this method will run when new_game is selected which holds the main game
@@ -110,6 +111,8 @@ class Plant_pet
                         sleep(2)
                         @water_level += 2
                         @growth_level += 1
+                        # water_level increase with 2 each time water is given
+                        # growth_level increase with 1 each time water is given
                         if @water_level == 9
                             types("Slow down and check your water level, you dont want your plant to drown!")
                             # warning message to user that the water_level is high

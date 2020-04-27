@@ -22,31 +22,37 @@ I believe it is very important for children to learn and understand the importan
 
 ##### How the target audience will use the app
 
-The main goal of Plant Pet is to have a healthy plant that grows a flower and to NOT let your plant die. To win at this game the user will have to look after their plant, nurture it so that it will grow healthy and make a beautiful flower, when the game will end. The user will lose when the plant dies. This could happen due to various reasons like underwatering, too little sunlight or when bugs and pests get to the plant. 
+The main goal of Plant Pet is to have a healthy plant that grows a flower and to NOT let your plant die. To win at this game the user will have to look after their plant, nurture it so that it will grow healthy and make a beautiful flower, when the game will end. The user will lose when the plant dies. This could happen due to  underwatering, being in the sun for too long or overwatering. 
 
 Plant Pet will be written using Ruby and will require the user to have a functional laptop/computer with ruby installed to launch and play this game.
 
 #### Features
 
-Plant Pet will include realistic features that the user will use to raise and care for their virtual plant. 
+Plant Pet will include realistic features that the user will use to raise and care for their virtual plant.
+
+Link to GitHub: https://github.com/zandelisenekal/terminal_app_plant_pet
 
 ###### Must have features:
 
 1. Water 
 
-The user will be able to water the plant. When watering the plant the water level of the plant will rise and the plant will grow. The plant's water level will begin at 0 and will increase as the user water's the plant. When the water level goes over 10, the plant will die from overwatering. The user will be able to move their plant from being in the sun to being in the shade. When the plant is in the sun evaporation will occur which will lower the water level of the water. The plant being in the shade will not affect the water level of the plant.
+The user will be able to water the plant. When watering the plant the water level of the plant will rise with 2 and the plant will grow - growth level increasing with 1. The plant's water level will begin at 1 and will increase as the user water's their plant. When the water level goes over 10, the plant will die from overwatering. The user will be able to move their plant from being in the sun to being in the shade. When the plant is in the sun evaporation will occur which will lower the water level of the water equal to the number of days the plant has spent outside. The plant being inside will not affect the water level of the plant.
 
-2. Sun or shade
+2. Location
 
-The user will be able to move the plant in the sun for sunlight or in the shade. The user will be asked for how long they want to move their plant outside in the sun. Being in the sun will affect the plants water level, lowering it. The sun will also cause the plant to grow faster. Being outdoors in the sun will increase the risk of pests higher; therefore increasing the pests variable. A higher pests variable and the plant will not be able to grow until the user chooses to use pesticides on the plant.
+The user will be able to move the plant outside in the sun or inside. The user will be asked for how long they want to move their plant outside in the sun. Being in the sun will affect the plant's water level, lowering it an equal to the number of days the plant spent outside. The sun will also cause the plant to grow faster, increasing the growth level of the plant by 1 per day outside. Being outdoors in the sun will increase the risk of pests; therefore increasing the pests variable. A higher pests variable and the plant will not be able to grow until the user chooses to use pesticides on the plant.
 
 3. Fertilization 
 
-Fertilizing the plant will increase the growth of the plant the most. The user will only be able to fertilize the plant once in the game because of the size of impact it will have on the growth level of the plant.
+Fertilizing the plant will increase the growth of the plant the most - increasing the growth level with 3. The user will only be able to fertilize the plant once in the game because of the size of impact it will have on the growth level of the plant.
 
-4. Name
+4. Main menu
 
-The user will be able to pick a name for their plant at the beginning of a new game.
+The game will have a main menu which will hold all the options that the user have to pick from. It will hold the give water, fertilize and move the plant outside options. It will also have a help option which, when selected, will tell the user how to select the correct option. The main menu will continue to loop through until the game is over. When the game is over, the loop will break. 
+
+5. Game over
+
+The game will be over when the user wins or loses the game. The user will win the game when the plant grows a flower - which will call on the "win game" method and a message and a ascii art flower will be displayed to the user. The plant will make a flower when the growth level of the plant reaches 10 (growth level will start at 1). The user will lose when the plant dies which will happen when water level decreases to 0 or increases over 10 or when growth level is 0. This call on the 'lose' method which will display a message to the user as well as a Game Over message using a gem.
 
 ###### Nice to have features
 
@@ -62,17 +68,21 @@ A separate option on the main menu that, when selected at any given time during 
 
 The plant will incur pests, increasing the pest variable, when the plant is placed in the sun (outside) for longer that 2 days. The user will be notified that some pests are inhabiting the plant when the plant has been placed in the sun outside. The user will then be able to treat the plant with pesticides which will decrease the pests variable to 0. Once the user treats the plant with pesticides the plant's growth will increase.
 
+4. Name
+
+The user will be able to pick a name for their plant at the beginning of a new game.
+
 #### User interaction and User experience
 
-When the game is started/opened, the user will be asked if they want to begin a new game. The user will have the options to choose either yes or no. If 'yes' is selected the game start and call on the New_game class. The New_game class will have required all other classes for the game to be executed. 
+When the game is started/opened, the user will be asked if they want to begin a new game. The user will have the options to choose either yes or no. If 'yes' is selected the game starts and call on the New_game method. 
 
-The user will be introduced to their new Plant Pet and will be asked to give it a name. From there the game simulation begins. 
+The user will be introduced to their new Plant Pet and will be told what the goal of the game is. From there the game simulation begins. 
 
-The user will be given the main menu which will have the following options: water, feed, move to sun or shade, treat with pesticides and help. The user will then have to choose what they want to do with their plant. This will be done by entering the number that corresponds to the feature that they want to use. 
+The user will be given the main menu which will have the following options: water, give fertilization, move outside in the sun and help. The user will then have to choose what they want to do with their plant. This will be done by entering the number that corresponds to the feature that they want to use. 
 
-After the user has picked a feature to use, a message will be displayed to the user accordingly  and the corresponding variable and growth level of the plant will be updated. For example if the user chooses to water the plant, the game will output a message to the user that the plant has been watered. The water_level variable will automatically be updated as well as the growth_level variable.
+After the user has picked a feature to use, a message will be displayed to the user accordingly and the water level and growth level of the plant will be updated. For example if the user chooses to water the plant, the game will output a message to the user that the plant has been watered. The water_level variable will automatically be updated as well as the growth_level variable.
 
-The user will continuously loop through the main menu until the plant either grows a flower and the user wins (when growth_level is 50) or until the plant dies from poor care.
+The user will continuously loop through the main menu until the plant either grows a flower and the user wins (when growth_level is 10) or until the plant dies from poor care.
 
 The user can choose the help option at anytime during the game which will then display a description to the user of how to use the game and how to choose which options. 
 
@@ -84,7 +94,24 @@ Error handling will also take place when the user wants to fertilize the plant m
 
 #### Control flow
 
-#### ![](C:\Users\zandelisenekal\Downloads\control_flow_terminal_app.jpg)
+#### Implementation plan
+
+Full implementation plan of features with checklists, deadlines and labels grouping together features by importance and size on Trello board:  https://trello.com/b/xkL51Rl5/terminalapp
+
+| Feature         | Description                                            | Original Checklist                                           | Actually implemented                                         |
+| --------------- | ------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
+| Water           | Give the plant water                                   | message display<br />water level increase with 2<br />growth level increase with 1 | Same as original                                             |
+| Fertilization   | Give the plant fertilization                           | fertilizer variable as boolean<br />can only give fertilizer once<br />increase growth level with 3<br />display message<br />display message when user wants to give more than once | same as original                                             |
+| Location        | Move the plant outside                                 | move the plant inside or outside<br />decrease water level when outside<br />increase growth level when outside in sun<br />growth level increase one per day<br />water level decrease 1 per day<br />message that plant is in the sun<br />message that user "remembered" to bring plant inside<br />menu options asking how long user wants to put plant in sun | can only move the plant outside;<br />rest is the same       |
+| Pesticide       | Treat plant with pesticide when plant has bugs         | ask user if they want to use pesticide<br />pests will occur if plant in sun for more than 2 days<br />no growth will take place when plant has pests<br />message displayed to tell user the plant has a pest | same as original + penalty was given when user chose not to use pesticide |
+| main menu       | Menu with all the options the user can choose from     | Loop through main menu until game is over<br />break out of loop when plant dies<br />break out of loop when user wins<br />have a help option in menu<br />display water & growth levels to user | same as original                                             |
+| Win game        | The user must be able to win at the game               | win game method<br />ascii flower<br />message displayed to user that they have won the game<br />will win when growth level is more => 10<br />breaks out of loop when user wins | same as original                                             |
+| Lose game       | The user must be able to lose when the plant dies      | plant dies when growth level is 0<br />plant dies when water level is 0<br />plant dies when water level is more than 10<br />display game over screen with gem<br />display message to user that plant has died<br />display game over using gem<br />breaks out of loop when plant dies | same as original + reason for death as variable              |
+| Welcome message | Display a welcome message to user when new game starts | welcome message using a gem<br />                            | same as original                                             |
+
+
+
+#### 
 
 
 
